@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Autofill Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-icon">✨</div>
+        <div class="logo-text">
+          <h1>Autofill AI</h1>
+          <span>Smart Job Assistant</span>
+        </div>
+      </div>
+      <span class="status-badge connected" id="status-badge">Disconnected</span>
+    </header>
+
+    <!-- Main Screens -->
+    <main class="main-content">
+      
+      <!-- Login screen -->
+      <section id="auth-screen" class="screen active">
+        <div class="hero-graphic">🔒</div>
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Connect to your Job Autofill Assistant account to enable AI matching.</p>
+        
+        <form id="login-form">
+          <div class="input-group">
+            <label for="email-input">Email Address</label>
+            <input type="email" id="email-input" placeholder="you@domain.com" required>
+          </div>
+          <div class="input-group">
+            <label for="password-input">Password</label>
+            <input type="password" id="password-input" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary" id="btn-login">
+            <span>Unlock Extension</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </form>
+        <div class="server-config">
+          <label for="server-url-input">Server API URL</label>
+          <input type="text" id="server-url-input" value="http://localhost:5000">
+        </div>
+      </section>
+
+      <!-- Dashboard screen -->
+      <section id="dashboard-screen" class="screen">
+        <div class="user-profile-header">
+          <div class="avatar" id="user-avatar">👤</div>
+          <div>
+            <h3 id="user-name">John Doe</h3>
+            <p id="user-email" class="user-sub">candidate@email.com</p>
+          </div>
+          <button id="btn-logout" class="btn-logout" title="Sign Out">Sign Out</button>
+        </div>
+
+        <div class="resume-status-card">
+          <div class="resume-icon">📄</div>
+          <div class="resume-info">
+            <h4>Active Resume</h4>
+            <p id="resume-filename">No resume uploaded</p>
+          </div>
+          <button class="btn-text" id="btn-upload-direct">Upload</button>
+        </div>
+
+        <!-- Scan action -->
+        <div class="action-card">
+          <h3>Scan Page for Forms</h3>
+          <p>Scan the active webpage to identify job application forms and fields.</p>
+          <button id="btn-scan" class="btn btn-primary">
+            <span>Scan Form Fields</span>
+            <span class="btn-icon-right">🔍</span>
+          </button>
+        </div>
+
+        <!-- Scanning Loader -->
+        <div class="loader-container" id="scanner-loader" style="display: none;">
+          <div class="spinner"></div>
+          <p>Analyzing fields semantically...</p>
+        </div>
+
+        <!-- Scan Results -->
+        <div id="scan-results-container" style="display: none;">
+          <div class="results-header">
+            <h4>Detected Fields (<span id="field-count">0</span>)</h4>
+            <button id="btn-refill" class="btn-text">Clear</button>
+          </div>
+
+          <div class="field-list" id="field-list">
+            <!-- Dynamic fields go here -->
+          </div>
+
+          <button id="btn-autofill" class="btn btn-accent btn-full">
+            <span>Autofill with AI RAG</span>
+            <span class="btn-sparkle">✨</span>
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Powered by FastAPI RAG Service & Qdrant</p>
+    </footer>
+  </div>
+
+  <script src="../utils/message-bus.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

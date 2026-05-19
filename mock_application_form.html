@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock Job Application Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #121824;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #6366f1;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .form-container {
+      width: 100%;
+      max-width: 580px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .form-section {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    .input-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    select {
+      background-color: #070a13;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 12px 14px;
+      font-size: 14px;
+      transition: all 0.25s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+    button {
+      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 20px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+      transition: all 0.25s;
+    }
+    button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Mock Job Application Form</h1>
+    <p class="subtitle">Use this local form to test scanning and AI autofilling with the Job Autofill Chrome Extension.</p>
+    
+    <form id="application-form" onsubmit="event.preventDefault(); alert('Application submitted successfully!');">
+      <!-- Section 1: Contact -->
+      <div class="form-section">
+        <h3>1. Personal Details</h3>
+        <div class="row">
+          <div class="input-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="e.g. John" required>
+          </div>
+          <div class="input-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="e.g. Doe" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="e.g. candidate@example.com" required>
+        </div>
+        <div class="input-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="e.g. (555) 000-0000" required>
+        </div>
+      </div>
+
+      <!-- Section 2: Profiles -->
+      <div class="form-section">
+        <h3>2. Professional Profiles</h3>
+        <div class="input-group">
+          <label for="github">GitHub Profile</label>
+          <input type="url" id="github" name="github" placeholder="e.g. https://github.com/yourusername">
+        </div>
+        <div class="input-group">
+          <label for="linkedin">LinkedIn Profile</label>
+          <input type="url" id="linkedin" name="linkedin" placeholder="e.g. https://linkedin.com/in/yourname">
+        </div>
+      </div>
+
+      <!-- Section 3: Additional -->
+      <div class="form-section">
+        <h3>3. Preferences</h3>
+        <div class="input-group">
+          <label for="salary">Desired Compensation (Salary)</label>
+          <input type="text" id="salary" name="salary" placeholder="e.g. $120,000">
+        </div>
+        <div class="input-group">
+          <label for="location">Preferred Location</label>
+          <select id="location" name="location">
+            <option value="">Select location...</option>
+            <option value="san-francisco">San Francisco, CA</option>
+            <option value="new-york">New York, NY</option>
+            <option value="remote">Remote</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+</body>
+</html>
